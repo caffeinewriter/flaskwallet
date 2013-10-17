@@ -1,0 +1,14 @@
+{% extends 'wallet/wallet/detail.html' %}
+
+{% block bodyclass %} address{% endblock %}
+
+{% block title %}{{ super() }}{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    {% if data.account %}
+        <li><a href="{{ url_for('wallet.account_detail', id=wallet.id, account=data.account) }}">{{ data.account }}</a></li>
+    {% endif %}
+    <li><a href="{{ url_for('wallet.address_detail', id=wallet.id, address=data.address) }}">{{ data.address }}</a></li>
+{% endblock %}
+

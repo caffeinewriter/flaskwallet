@@ -1,0 +1,38 @@
+@import "config"
+
+@mixin font($fontfamily, $font-size:null, $color:null, $fontstyle:null)
+    font-family: #{$fontfamily}
+    font-size: #{$font-size}
+    color: #{$color}
+    font-style: #{$fontstyle}
+
+@mixin transition($time:1s, $animation:linear)
+    -webkit-transition: $time $animation
+    -moz-transition: $time $animation
+    -ms-transition: $time $animation
+    -o-transition: $time $animation
+    transition: $time $animation
+
+@mixin transform($how:null)
+    -webkit-transform: $how
+    -moz-transform: $how
+    -ms-transform: $how
+    -o-transform: $how
+    transform: $how
+
+@mixin shadow($shadow)
+    -webkit-box-shadow: $shadow
+    -moz-box-shadow: $shadow
+    box-shadow: $shadow
+
+@mixin border-radius($radius)
+    -webkit-border-radius: $radius
+    -moz-border-radius: $radius
+    border-radius: $radius
+
+@mixin rotate($deg)
+    -webkit-transform: rotate($deg)
+    -moz-transform: rotate($deg)
+    -ms-transform: rotate($deg)
+    -o-transform: rotate($deg)
+    transform: rotate($deg)

@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block bodyclass %} settings{% endblock %}
+
+{% block title %}{{ super() }} Settings{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li><a href="{{ url_for('settings.list') }}">Settings</a></li>
+{% endblock %}

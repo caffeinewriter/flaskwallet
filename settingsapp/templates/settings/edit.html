@@ -1,0 +1,18 @@
+{% extends 'settings/base.html' %}
+
+{% block bodyclass %}{{ super() }} edit{% endblock %}
+
+{% block title %}{{ super() }} Edit{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>{{ setting.name }}</li>
+    <li>Edit</li>
+{% endblock %}
+
+{% block content %}
+    <div id="edit">
+        <h1>Edit {{ setting.name }}</h1>
+        {% include 'form.html' %}
+    </div>
+{% endblock %}

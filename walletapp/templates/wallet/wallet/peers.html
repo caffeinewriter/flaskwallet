@@ -1,0 +1,42 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }} peers{% endblock %}
+
+{% block title %}{{ super() }} Peers{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Peers</li>
+{% endblock %}
+
+{% block content %}
+    {% if peers %}
+        <div id="peers">
+            <h2>Peers</h2>
+            <table>
+                <thead>
+                    <th>IP</th>
+                    <th>Version</th>
+                    <th>Subversion</th>
+                    <th>Inbound</th>
+                    <th>Syncnode</th>
+                    <th>Services</th>
+                    <th>Banscore</th>
+                    <th>Starting height</th>
+                    {% if peers.0.bytessent %}
+                        <th>Bytes sent</th>
+                        <th>Bytes received</th>
+                    {% endif %}
+                    <th>Last sent</th>
+                    <th>Last received</th>
+                    <th>Connected since</th>
+                </thead>
+                <tbody>
+                    {% for peer in peers %}
+                        {% include '/wallet/wallet/peer_snippet.html' %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endif %}
+{% endblock %}

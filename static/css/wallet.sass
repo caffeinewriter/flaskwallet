@@ -1,0 +1,346 @@
+////////////////////////////////////////////////////////////////////
+// Global styles
+// Reset
+*
+    margin: 0
+    padding: 0
+
+img,
+fieldset
+    border: 0
+
+@import "config"
+@import "extends"
+@import "mixins"
+
+// Typography
+html
+    @include font('Verdana, Arial, sans-serif', $font-size, $color-fg)
+    overflow-y: scroll
+    line-height: 1.2
+    background: $color-bg
+
+h1, h2, h3, h4, h5
+    font-size: $font-size-h1
+    line-height: $font-size-large
+    margin: $font-size 0
+    a
+        color: $color-fg
+        text-decoration: none
+
+h2
+    font-size: $font-size-h2
+
+h3
+    font-size: $font-size-h3
+
+h4
+    font-size: $font-size-h4
+
+h5
+    font-size: $font-size-h5
+
+
+.content,
+.document // docutils
+    p,
+    ol,
+    ul
+        max-width: 80ex
+        margin-bottom: $length-vertical
+    ol,
+    ul
+        margin-left: 3em
+    ol
+        list-style-type: decimal
+    ul
+        list-style-type: disc
+    form
+        margin-bottom: $length-vertical
+    img
+        border: $line-width solid $line-color
+        @include border-radius($line-radius)
+
+pre
+    @extend %code
+
+// Accessibility link
+#tocontent
+    position: absolute
+    left: -9999em
+
+// Layout
+#wrapper
+    @extend %cell-wrap
+
+// the breadcrumb and control stuff
+nav
+    @extend %cell-full
+    #mainnav
+        @extend %buttoncontainer
+        li
+            display: inline-block
+            &.external
+                display: none
+                @media screen and (min-width: $screen-small)
+                    display: inline-block
+        a
+            @extend %button
+    #breadcrumb
+        @extend %breadcrumb
+        float: left
+        font-size: smaller
+    .control
+        display: none
+        @media screen and (max-width: $screen-tiny)
+            display: block
+        float: right
+        a
+            @extend %button
+    text-align: left
+
+// flash messages
+#flashes
+    @extend %cell-full
+    font-size: smaller
+    li
+        color: $color-info
+        list-style-type: none
+        &.error
+            color: $color-error-dark
+        &.success
+            color: $color-success-dark
+        &.warning
+            color: $color-warning-dark
+
+footer
+    clear: both
+    text-align: center
+    margin-top: 250px
+    margin-bottom: $length-long
+    font-size: $font-size-small
+    a
+        @extend %textlink
+    @media screen and (max-width: $screen-medium)
+        margin-top: 150px
+    @media screen and (max-width: $screen-tiny)
+        margin-top: 50px
+
+////////////////////////////////////////////////////////////////////
+// Page-specific stuff
+
+// wallet list
+body.wallet.list
+    section
+        @extend %cells-gr-left
+    #wallets
+        @extend %fancytable
+        a,
+        button
+            @extend %button
+            //@media screen and (max-width: $screen-tiny)
+            //    font-size: smaller
+        a.testnet
+            background-color: $color-success
+            &:hover
+                background-color: $color-success-dark
+        td
+            &.actions
+                form
+                    display: inline-block
+            &.error
+                background-color: $color-error
+            &.host,
+            &.port,
+            &.https,
+            &.testnet,
+            &.actions
+                display: none
+        thead
+            display: none
+        @media screen and (min-width: $screen-small)
+            td
+                &.host,
+                &.port,
+                &.actions,
+                &.testnet,
+                &.https
+                    display: table-cell
+            thead
+                display: table-header-group
+
+    #tools .actions
+        @extend %buttoncontainer
+
+body.wallet.detail section
+    @extend %cells-half-third
+    #tools form
+        display: inline-block
+
+body.account.detail section
+    @extend %cells-half-third
+
+body.wallet.send section,
+body.account.send section
+    @extend %cells-half
+    @extend %fancyform
+
+body.wallet.edit section,
+body.account.edit section,
+body.wallet.move section
+    @extend %cells-half
+    @extend %fancytable
+    @extend %fancyform
+
+// the summary is the only content so far on the address detail page
+body.address.detail section
+    @extend %cells-gr-left
+
+body.block.detail
+    #details,
+    #tx
+        float: none
+        @extend %cell-full
+
+// peers list
+body.peers section
+    @extend %cell-full
+    @extend %fancytable
+    table
+        font-size: smaller
+    @media screen and (max-width: $screen-tiny)
+        font-size: xx-small
+        overflow: visible
+
+// mininginfo
+body.mininginfo section
+    @extend %cell-full
+    @extend %fancytable
+
+// help page
+body.help section
+    @extend %cell-full
+    @extend %fancytable
+    tr.implemented .command
+        color: $color-success-dark
+    tr.ignored .command
+        color: $color-error-dark
+    tr.interested .command
+        color: $color-action-dark
+
+// unlock page
+body.unlock section
+    @extend %cell-full
+    @extend %fancyform
+
+// sign page
+body.sign section
+    @extend %cell-full
+    @extend %fancyform
+    input[type=text]
+        min-width: 40ex
+    textarea
+        min-width: 80ex
+        min-height: 20ex
+
+// wallet add page
+body.add section
+    @extend %cell-full
+    @extend %fancyform
+
+// groupings page
+body.groupings section
+    @extend %cell-full
+    @extend %fancytable
+    @media screen and (max-device-width: $screen-tiny)
+        font-size: smaller
+    @media screen and (max-width: $screen-xtiny)
+        td.address
+            max-width: 10ex
+            overflow: hidden
+
+// home page
+body.home section
+    @extend %cell-full
+
+// Global account style
+#accounts
+    @extend %fancytable
+
+// Global summary style
+#summary
+    @extend %fancytable
+    tr.address td + td
+        font-size: smaller
+
+#addresses
+    ol
+        @extend %fancylist
+
+#tools
+    a,
+    input[type=submit]
+        @extend %button
+
+    .tools,
+    .info
+        @extend %buttoncontainer
+
+    form
+        @extend %fancyform
+
+// transaction
+div.tx
+    @extend %card
+    font-size: $font-size-small
+
+    &.tx-move
+        border-color: $color-action
+
+    &.tx-receive
+        border-color: $color-success
+
+    &.tx-send
+        border-color: $color-error
+
+    > div
+        display: inline-block
+        margin-right: $length-medium
+    .address,
+    .txid,
+    .blockhash,
+    .confirmations,
+    .comment,
+        display: block
+
+// settings page
+body.settings.list section
+    @extend %cells-half
+    #list
+        @extend %fancytable
+        a,
+        button
+            @extend %button
+        form
+            display: inline-block
+    #create
+        @extend %fancyform
+
+body.settings.edit section
+    #edit
+        @extend %cell-full
+        @extend %fancyform
+
+// markets
+body.markets.list section
+    @extend %cells-quarter-third-half
+
+// docutils toc
+#contents
+    @include border-radius($line-radius)
+    border: $line-width solid $line-color
+    float: right
+    font-size: smaller
+    padding: $length-long
+    ul
+        margin-left: $length-long

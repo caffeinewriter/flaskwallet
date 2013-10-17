@@ -1,0 +1,57 @@
+{% extends 'wallet/account/base.html' %}
+
+{% block title %}{{ super() }} Detail{% endblock %}
+
+{% block bodyclass %}{{ super() }} detail{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Details</li>
+{% endblock %}
+
+{% block content %}
+    <div id="summary">
+        <h1>Account Summary</h1>
+        <table class="table">
+            <tbody>
+                <tr class="account">
+                    <td>Account</td>
+                    <td>{{ account|accountformat }}</td>
+                </tr>
+                <tr class="address">
+                    <td>Address</td>
+                    <td><a href="{{ url_for('wallet.address_detail', id=wallet.id, address=data.address) }}">{{ data.address }}</a></td>
+                </tr>
+                <tr class="tx">
+                    <td>Transactions</td>
+                    <td>{{ data.transactions|length }}</td>
+                </tr>
+                <tr class="received">
+                    <td>Received</td>
+                    <td>{{ data.received|coinformat }}</td>
+                </tr>
+                <tr class="balance">
+                    <td>Current balance</td>
+                    <td>{{ data.balance|coinformat }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="addresses">
+        <h2>Addresses</h2>
+        <ol>
+            {% for address in data.addresses %}
+                <li{% if data.address == address %} class="main"{% endif %}>
+                    <a href="{{ url_for('wallet.address_detail', id=wallet.id, address=address) }}">{{ address }}</a>
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <div id="tools">
+        <h2>Tools</h2>
+        <a href="{{ url_for('wallet.account_send', id=wallet.id, account=account|accountformat)|urlencode }}" class="action">Send coins</a>
+        <a href="{{ url_for('wallet.account_newaddress', id=wallet.id, account=account|accountformat)|urlencode }}" class="action">Get new address</a>
+    </div>
+{% endblock %}

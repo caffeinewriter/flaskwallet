@@ -1,0 +1,10 @@
+{% extends 'wallet/wallet/detail.html' %}
+
+{% block title %}{{ super() }} {{ account|accountformat }}{% endblock %}
+
+{% block bodyclass %} account{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li><a href="{{ url_for('wallet.account_detail', id=wallet.id, account=account|accountformat)|urlencode }}">{{ account|accountformat }}</a></li>
+{% endblock %}

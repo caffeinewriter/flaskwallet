@@ -1,0 +1,12 @@
+*.pyc
+*.swp
+.sass-cache/
+*.db
+*.sql
+*.css
+.coverage
+coverage
+bitcoin-testnet-box-*
+*.tar.gz
+config.py
+doc/_build/

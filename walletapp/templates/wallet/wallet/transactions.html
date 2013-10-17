@@ -1,0 +1,25 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block title %}{{ super() }} Transactions{% endblock %}
+
+{% block bodyclass %}{{ super() }} transactions{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Transactions</li>
+{% endblock %}
+
+{% block content %}
+    {% if transactions %}
+        <h1>Transactions for {{ wallet.label }}</h1>
+        <div id="transactions">
+            <ol>
+                {% for tx in transactions|reverse %}
+                    <li>
+                        {% include 'wallet/transaction_snippet.html' %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endif %}
+{% endblock %}

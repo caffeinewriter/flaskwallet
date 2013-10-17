@@ -1,0 +1,42 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }}  groupings{% endblock %}
+
+{% block title %}{{ super() }} - Address groupings{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Address groupings</li>
+{% endblock %}
+
+{% block content %}
+    <div id="groupings">
+        <h1>Address groupings</h1>
+        {% for group in groupings %}
+            <h2>Group</h2>
+            <table>
+                <thead>
+                    <th>Address</th>
+                    <th>Account</th>
+                    <th>Balance</th>
+                </thead>
+                <tbody>
+                    {% for thing in group %}
+                        <tr>
+                            <td class="address">
+                                <a href="{{ url_for('wallet.address_detail', id=wallet.id, address=thing.0) }}">{{ thing.0 }}</a>
+                            </td>
+                            {# TODO always determine account! #}
+                            <td class="account">
+                                {% if thing.2 %}
+                                    <a href="{{ url_for('wallet.account_detail', id=wallet.id, account=thing.2)|urlencode }}">{{ thing.2 }}</a>
+                                {% endif %}
+                            </td>
+                            <td class="amount">{{ thing.1|coinformat }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+{% endblock %}

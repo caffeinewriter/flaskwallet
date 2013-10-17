@@ -1,0 +1,17 @@
+<tr>
+    <td>{{ peer.addr }}</td>
+    <td>{{ peer.version }}</td>
+    <td>{{ peer.subver }}</td>
+    <td>{{ peer.inbound }}</td>
+    <td>{{ peer.syncnode }}</td>
+    <td>{{ peer.services }}</td>
+    <td>{{ peer.banscore }}</td>
+    <td>{{ peer.startingheight }}</td>
+    {% if peer.bytessent %}
+        <td>{{ peer.bytessent|byteformat }}</td>
+        <td>{{ peer.bytesrecv|byteformat }}</td>
+    {% endif %}
+    <td>{{ peer.lastsend|timeformat(short=True) }}</td>
+    <td>{{ peer.lastrecv|timeformat(short=True) }}</td>
+    <td>{{ peer.conntime|timeformat(short=True) }}</td>
+</tr>

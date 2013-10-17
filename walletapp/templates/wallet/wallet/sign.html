@@ -1,0 +1,18 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }} sign{% endblock %}
+
+{% block title %}{{ super() }} - Sign{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Sign</li>
+{% endblock %}
+
+{% block content %}
+    <div id="sign">
+        <h1>Sign message</h1>
+        {% include 'form.html' %}
+        {{ data.signed_message }}
+    </div>
+{% endblock %}

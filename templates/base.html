@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+        <link rel="stylesheet" href="/static/css/wallet.css">
+	</head>
+	<body class="no-js{% block bodyclass %}{% endblock %}">
+        <a href="#content" id="tocontent">Skip to content</a>
+        <div id="wrapper">
+            <nav>
+                <ul id="mainnav">
+                    <li><a class="action" href="{{ url_for('root') }}">Home</a></li>
+                    <li><a class="action" href="{{ url_for('wallet.wallet_list') }}">Wallets</a></li>
+                    <li><a class="action" href="{{ url_for('settings.list') }}">Settings</a></li>
+                    <li class="external"><a href="http://bitcoinwisdom.com/">bitcoinwisdom</a></li>
+                    <li class="external"><a href="http://www.cryptocoincharts.info/">cryptocoins</a></li>
+                    <li class="external"><a href="http://bitcoinity.org/markets/">bitcoinity</a></li>
+                </ul>
+            </nav>
+            <nav>
+                <ul id="breadcrumb">
+                    {% block breadcrumb %}
+                        <li><a href="{{ url_for('root') }}">Home</a></li>
+                    {% endblock %}
+                </ul>
+            </nav>
+            {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                    <ul id=flashes>
+                      {% for category, message in messages %}
+                          <li class="{{ category }}">{{ message|safe }}</li>
+                      {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <section>
+		        {% block content %}{% endblock %}
+            </section>
+            <footer class="row">
+                &copy; 2013 <a href="http://kuttler.eu/">Nicolas Kuttler</a>
+            </footer>
+        </div>
+	</body>
+</html>

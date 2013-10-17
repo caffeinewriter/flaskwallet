@@ -1,0 +1,84 @@
+{%- macro form_field_label(field) -%}
+    <label for="{{ field.id }}">{{ field.label.text }}
+    {%- if field.flags.required -%}
+        <abbr title="Diese Feld muss angegeben werden">*</abbr>
+    {%- endif %}</label>
+{% endmacro %}
+
+{%- macro form_field_description(field) -%}
+    {% if field.description %}
+        <span class="descr">{{ field.description }}</span>
+    {% endif %}
+{%- endmacro -%}
+
+{%- macro form_field_errors(field) -%}
+    {% if field.errors %}
+        {% for error in field.errors %}
+            <span class="help-block">{{ error }}</a>
+        {% endfor %}
+    {% endif %}
+{%- endmacro -%}
+
+{%- macro form_field_boolean(field) -%}
+    <div class="input">
+        <label>
+            {{ field(**kwargs) }}
+            <span>{{ field.label.text }}</span>
+            {{ form_field_description(field) }}
+            {{ form_field_errors(field) }}
+        </label>
+    </div>
+{%- endmacro -%}
+
+{%- macro action_buttons(submit_title, cancel_title="Zurück setzten", submit_class="primary") -%}
+<div class="actions">
+    <input type="submit" class="{{submit_class}}" value="{{submit_title}}">
+    &nbsp;
+    <button type="reset">{{cancel_title}}</button>
+</div>
+{%- endmacro -%}
+
+{%- macro form_field(field) -%}
+    {% if field.type == 'HiddenField' %}
+        {{ field() }}
+    {% else %}
+        {% if field.type == 'BooleanField' %}
+            {{ form_field_boolean(field, **kwargs) }}
+        {% else%}
+            {{ form_field_label(field) }}
+            {% if field.type == 'RadioField' %}
+                {{ field(class='radio-group', **kwargs) }}
+            {% elif field.type == 'TextField' or field.type == 'IntegerField' %}
+                {{ field(class='form-control', **kwargs) }}
+            {% else %}
+                {{ field(**kwargs) }}
+            {% endif %}
+            {{ form_field_description(field) }}
+            {{ form_field_errors(field) }}
+        {% endif %}
+    {% endif %}
+{%- endmacro -%}
+
+{%- macro form_fields(fields, class=None, legend=None) -%}
+    <fieldset {% if class %}class="{{class}}"{% endif %}>
+        <div class="form-group">
+            {% if legend %}
+                <legend>{{legend}}</legend>
+            {% endif %}
+            {% for field in fields %}
+                <div{% if field.errors %} class="has-error"{% endif %}>
+                    {% if field.type == 'HiddenField' %}
+                        {{ field() }}
+                            {% else %}
+                        {{ form_field(field) }}
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <button type="submit" class="action">{{ submittext|default('Submit form') }}</button>
+        </div>
+    </fieldset>
+{%- endmacro -%}
+
+<form role="form" action="{{ actionurl }}" method="post">
+    {{ form_fields(form) }}
+</form>

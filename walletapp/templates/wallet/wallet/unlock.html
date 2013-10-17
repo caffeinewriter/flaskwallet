@@ -1,0 +1,17 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }} unlock{% endblock %}
+
+{% block title %}{{ super() }} unlock{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Unlock</li>
+{% endblock %}
+
+{% block content %}
+    <div id="unlock">
+        <h1>Unlock</h1>
+        {% include 'form.html' %}
+    </div>
+{% endblock %}

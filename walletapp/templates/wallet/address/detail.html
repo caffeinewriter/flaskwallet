@@ -1,0 +1,47 @@
+{% extends 'wallet/address/base.html' %}
+
+{% block bodyclass %}{{ super() }} detail{% endblock %}
+
+{% block title %}{{ super() }} Detail{% endblock %}
+
+{% block content %}
+    <div id="summary">
+        <h1>Address Summary</h1>
+        <table class="table">
+            <tr class="address">
+                <td>Address</td>
+                <td>
+                    {{ data.address }}
+                <a class="external" href="http://blockchain.info/address/{{ data.address }}/">info</a>
+                </td>
+            </tr>
+            {% if data.account %}
+                <tr class="account">
+                    <td>Account</td>
+                    <td><a href="{{ url_for('wallet.account_detail', id=wallet.id, account=data.account)|urlencode }}">{{ data.account }}</a></td>
+                </tr>
+                <tr class="received">
+                    <td>Received amount</td>
+                    <td>{{ data.received_amount|coinformat }}</td>
+                </tr>
+            {% endif %}
+        </table>
+    </div>
+
+    <div id="tools">
+        <h2>Tools</h2>
+        <a href="{{ url_for('wallet.address_sign', id=wallet.id, address=data.address) }}" class="action">Sign message</a>
+        <a href="{{ url_for('wallet.address_dumpprivkey', id=wallet.id, address=data.address) }}" class="warning">Get Private Key</a>
+    </div>
+
+    <div id="tx">
+        {% if data.transactions|length %}
+            <h2>Received Transactions</h2>
+            {% for tx in data.transactions|reverse %}
+                {% if tx.address == data.address %}
+                    {% include 'wallet/transaction_snippet.html' %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

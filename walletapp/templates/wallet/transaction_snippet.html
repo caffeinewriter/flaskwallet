@@ -1,0 +1,89 @@
+<div class="tx tx-{{ tx.category|default('uncertain') }}">
+
+    <div class="amount">
+        Amount {{ tx.amount|coinformat }}
+    </div>
+
+    {% if tx.account|accountformat %}
+        <div class="account">
+            Account <a href="{{ url_for('wallet.account_detail', id=wallet.id, account=tx.account|accountformat) }}">{{ tx.account|accountformat }}</a>
+        </div>
+    {% endif %}
+
+    {% if tx.otheraccount|accountformat %}
+        <div class="otheraccount">
+            Other Account <a href="{{ url_for('wallet.account_detail', id=wallet.id, account=tx.otheraccount|accountformat) }}">{{ tx.otheraccount|accountformat }}</a>
+        </div>
+    {% endif %}
+
+    {% if tx.to %}
+        <div class="to">
+            To {{ tx.to }}
+        </div>
+    {% endif %}
+
+    {% if tx.address %}
+        <div class="address">
+            {# FIXME should link to wallet data when available #}
+            Address <a href="{{ url_for('wallet.address_detail', id=wallet.id, address=tx.address) }}">{{ tx.address }}</a>
+            <a class="external" href="http://blockchain.info/address/{{ tx.address }}/">info</a>
+        </div>
+    {% endif %}
+
+    {% if tx.txid %}
+        <div class="txid">
+            {# FIXME should link to wallet data when available #}
+            Transaction <a href="{{ url_for('wallet.tx_detail', id=wallet.id, txid=tx.txid) }}">{{ tx.txid }}</a>
+            <a class="external" href="http://blockchain.info/tx/{{ tx.txid }}/">info</a>
+        </div>
+    {% endif %}
+
+    {% if tx.blockhash %}
+        <div class="blockhash">
+            Blockhash <a href="{{ url_for('wallet.block_detail', id=wallet.id, block=tx.blockhash) }}">{{ tx.blockhash }}</a>
+        </div>
+    {% endif %}
+
+    {% if tx.comment %}
+        <div class="comment">
+            Comment {{ tx.comment }}
+        </div>
+    {% endif %}
+
+    {% if tx.time %}
+        <div class="time">
+            Time {{ tx.time|timeformat }}
+        </div>
+    {% endif %}
+
+    {% if tx.timereceived %}
+        <div class="timereceived">
+            Time received {{ tx.timereceived|timeformat }}
+        </div>
+    {% endif %}
+
+    {% if tx.blocktime %}
+        <div class="blocktime">
+            Blocktime {{ tx.blocktime|timeformat }}
+        </div>
+    {% endif %}
+
+    {% if fee %}
+        <div class="fee">
+            Fee {{ tx.fee }}
+        </div>
+    {% endif %}
+
+    {% if tx.confirmations %}
+        <div class="confirmations">
+            Confirmations {{ tx.confirmations }}
+        </div>
+    {% endif %}
+
+    {% if tx.blockindex %}
+        <div class="blockindex">
+            Blockindex {{ tx.blockindex }}
+        </div>
+    {% endif %}
+
+</div>

@@ -1,0 +1,8 @@
+{% extends 'wallet/index.html' %}
+
+{% block title %}{{ wallet.label }}{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li><a href="{{ url_for('wallet.wallet_detail', id=wallet.id) }}">{{ wallet.label }}</a> ({{ wallet.rpchost }}{% if wallet.testnet %}, testnet{% endif %})</li>
+{% endblock %}

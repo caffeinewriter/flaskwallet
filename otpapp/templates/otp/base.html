@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+
+{% block bocyclass %}{{ super() }} otp{% endblock %}
+
+{% block title %}{{ super() }} OTP{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li><a href="{{ url_for('otp.setup') }}">OTP</a></li>
+{% endblock %}

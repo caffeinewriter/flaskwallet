@@ -1,0 +1,23 @@
+{% extends 'wallet/index.html' %}
+
+{% block bodyclass %}{{ super() }} add{% endblock %}
+
+{% block title %}Add Wallet{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Add wallet</li>
+{% endblock %}
+
+{% block content %}
+    <div id="add">
+        <h1>Add a wallet</h1>
+        <p>
+            I have used this wallet application to connect to
+            various altcoin instances.
+            Works for me.
+        </p>
+        {% set submittext='Add wallet' %}
+        {% include 'form.html' %}
+    </div>
+{% endblock %}

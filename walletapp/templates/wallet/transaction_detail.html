@@ -1,0 +1,20 @@
+{% extends 'wallet/wallet/detail.html' %}
+
+{% block bodyclass %}{{ super() }} transactions{% endblock %}
+
+{% block title %}{{ wallet }}, Transaction {{ tx.txid }}{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>{{ tx.txid }}</li>
+{% endblock %}
+
+{% block content %}
+    <div id="tx">
+        {% include 'wallet/transaction_snippet.html' %}
+        {% for detail in tx.details %}
+            {% set tx = detail %}
+            {% include 'wallet/transaction_snippet.html' %}
+        {% endfor %}
+    </div>
+{% endblock %}

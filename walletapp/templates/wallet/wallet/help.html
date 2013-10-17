@@ -1,0 +1,74 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }} help{% endblock %}
+
+{% block title %}{{ super() }} Help{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Help</li>
+{% endblock %}
+
+{% block content %}
+    <div id="help" class="content">
+        <h1>Wallet Help</h1>
+        <p>
+            This is the output from the daemon's <kbd>help</kbd> command.
+        <p>
+        </p>
+            Flaskwallet can use {{ data.done }} out of {{ data.len }}
+            API calls this node documents
+            {%- if data.additional -%}
+                , and {{ data.additional }} more this node doesn't document.
+            {%- else -%}
+                .
+            {%- endif %}
+        </p>
+        </p>
+            Green commands are used by this app in some way.
+            Red commands won't be implemented unless somebody gives me a
+            good reason to do so.
+            I'm interested in implementing the blue ones.
+        <p>
+        <table>
+            <thead>
+                <th>Command</th>
+                <th>Description</th>
+            <thead>
+            <tbody>
+                {% for line in data.help %}
+                    <tr
+                        {%- if line.0 in data.implemented -%}
+                            {{ ' ' }}class="implemented"
+                        {%- elif line.0 in data.ignored -%}
+                            {{ ' ' }}class="ignored"
+                        {%- elif line.0 in data.interested -%}
+                            {{ ' ' }}class="interested"
+                        {%- endif %}>
+                        <td class="command">{{ line.0 }}</td>
+                        <td>{{ line.1 }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if data.unknown|length %}
+            <h2>Commands not documented by this wallet</h2>
+            <p>
+                These are commands this application knows about but that
+                the node doesn't document:
+            </p>
+            <ul>
+                {% for command in data.unknown %}
+                    <li>{{ command }}</li>
+                {% endfor %}
+            </ul>
+            <p>
+                Some commands are only
+                documented when they are currently available.
+                For example encrypting the wallet is only documented
+                when it isn't encrypted yet.
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

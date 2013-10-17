@@ -1,0 +1,153 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block title %}{{ super() }} Detail{% endblock %}
+
+{% block bodyclass %}{{ super() }} detail{% endblock %}
+
+{% block content %}
+    <div id="summary">
+        <h1>Wallet Summary</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Coin</td>
+                    <td>{{ wallet.coin|coinname|default('') }} ({{ wallet.coin }})</td>
+                </tr>
+                <tr>
+                    <td>Balance</td>
+                    <td>{{ data.info.balance|coinformat }}</td>
+                </tr>
+                <tr>
+                    <td>Version</td>
+                    <td>{{ data.info.version }}</td>
+                </tr>
+                <tr>
+                    <td>Wallet version</td>
+                    <td>{{ data.info.walletversion }}</td>
+                </tr>
+                <tr>
+                    <td>Testnet</td>
+                    <td>{{ data.info.testnet }}</td>
+                </tr>
+                <tr>
+                    <td>Connections</td>
+
+                    <td>{{ data.info.connections }}
+                    (<a href="{{ url_for('wallet.wallet_peers', id=wallet.id) }}">View</a>)</td>
+                </tr>
+                <tr>
+                    <td>Errors</td>
+                    <td>{{ data.info.errors }}</td>
+                </tr>
+
+                <tr>
+                    <td>PayTXFee</td>
+                    <td>{{ data.info.paytxfee|coinformat }}</td>
+                </tr>
+                <tr>
+                    <td>Protocol version</td>
+                    <td>{{ data.info.protocolversion }}</td>
+                </tr>
+                <tr>
+                    <td>Proxy</td>
+                    <td>{{ data.info.proxy }}</td>
+                </tr>
+                {% if data.info.moneysupply %}
+                    <tr>
+                        <td>Money supply</td>
+                        <td>{{ data.info.moneysupply|coinformat(short=True) }}</td>
+                    </tr>
+                {% endif %}
+                <tr>
+                    <td>Blocks</td>
+                    <td>{{ data.info.blocks }}</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td>{{ data.info.difficulty }}</td>
+                </tr>
+                <tr>
+                    <td>Time offset</td>
+                    <td>{{ data.info.timeoffset }}</td>
+                </tr>
+                <tr>
+                    <td>Lock status</td>
+                    <td>
+                        {% if data.info.unlocked_until is defined %}
+                            {% if data.info.unlocked_until %}
+                                {{ data.info.unlocked_until|timedelta }}
+                            {% else %}
+                                Locked
+                                (<a href="{{ url_for('wallet.wallet_unlock', id=wallet.id) }}">Unlock</a>)
+                            {% endif %}
+                        {% else %}
+                            Not encrypted
+                            (<a href="{{ url_for('wallet.wallet_encrypt', id=wallet.id) }}">Encrypt</a>)
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td>Keypoololdest</td>
+                    <td>{{ data.info.keypoololdest|timeformat }}</td>
+                </tr>
+                <tr>
+                    <td>Keypool size</td>
+                    <td>{{ data.info.keypoolsize }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="accounts">
+        {% set accounts = data.accounts %}
+        {% include 'wallet/account/balances.html' %}
+    </div>
+
+    <div id="tools">
+        <h2>Tools</h2>
+
+        <ul class="tools">
+            {% if data.global_send %}
+                <a href="{{ url_for('wallet.wallet_send', id=wallet.id) }}" class="action">Send coins</a>
+            {% endif %}
+            <a href="{{ url_for('wallet.wallet_move', id=wallet.id) }}" class="action">Move coins</a>
+            <a href="{{ url_for('wallet.address_sign_any', id=wallet.id) }}" class="action">Sign message</a>
+            {% if data.info.unlocked_until is defined %}
+                {% if data.info.unlocked_until %}
+                    <form action="{{ url_for('wallet.wallet_lock', id=wallet.id) }}" method="post">
+                        <button type="submit" class="warning">Lock</button>
+                    </form>
+                {% else %}
+                    <a href="{{ url_for('wallet.wallet_unlock', id=wallet.id) }}" class="action">Unlock</a>
+                {% endif %}
+            {% else %}
+                <a href="{{ url_for('wallet.wallet_encrypt', id=wallet.id) }}" class="action">Encrypt</a>
+            {% endif %}
+        </ul>
+        <div class="content">
+            <strong>Create a new account</strong>
+            {% set submittext='Add account' %}
+            {% set form=data.forms.account %}
+            {% set actionurl=url_for('wallet.account_create', id=wallet.id) %}
+            {% include 'form.html' %}
+
+            <br>
+            <strong>Set the transaction fee</strong>
+            {% set submittext='Set fee' %}
+            {% set form=data.forms.txfee %}
+            {% set actionurl=url_for('wallet.wallet_settxfee', id=wallet.id) %}
+            {% include 'form.html' %}
+        </div>
+
+        <h2>Info</h2>
+        <ul class="info">
+            <a href="{{ url_for('wallet.wallet_transactions', id=wallet.id) }}" class="info">Transactions</a>
+            <a href="{{ url_for('wallet.wallet_received', id=wallet.id) }}" class="info">Received</a>
+            <a href="{{ url_for('wallet.wallet_addressgroupings', id=wallet.id) }}" class="info">Groupings</a>
+            <a href="{{ url_for('wallet.wallet_help', id=wallet.id) }}" class="info">Help</a>
+            <a href="{{ url_for('wallet.wallet_mininginfo', id=wallet.id) }}" class="info">Mining Info</a>
+            <a href="{{ url_for('wallet.wallet_peers', id=wallet.id) }}" class="info">Peers</a>
+        </>
+    </div>
+
+{% endblock %}

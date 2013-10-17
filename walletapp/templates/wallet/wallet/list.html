@@ -1,0 +1,86 @@
+{% extends 'wallet/index.html' %}
+
+{% block bodyclass %}{{ super() }} list{% endblock %}
+
+{% block title %}Wallet List{% endblock %}
+
+{% block content %}
+    <div id="wallets">
+        <h1>Manage Wallets</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Label</th>
+                    <th>Amount</th>
+                    <th>Coin</th>
+                    <th>Host</th>
+                    <th>Port</th>
+                    <th>HTTPS</th>
+                    <th>Testnet</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for wallet in wallets %}
+                    <tr>
+                        <td class="label"><a href="{{ url_for('.wallet_detail', id=wallet.id) }}" class="action
+                            {%- if not wallet.info -%}
+                                {{ ' ' }}disabled
+                            {%- endif -%}
+                            {%- if wallet.testnet -%}
+                                {{ ' ' }}testnet
+                            {%- endif -%}
+                            ">{{ wallet.label }}</a></td>
+                        <td class="balance">
+                            {%- if wallet.info -%}
+                                {{ wallet.info.balance|coinformat(short=True) }}
+                            {%- endif -%}
+                        </td>
+                        <td class="coin">{{ wallet.coin }}</td>
+                        <td class="host">{{ wallet.rpchost }}</td>
+                        <td class="port">{{ wallet.rpcport }}</td>
+                        <td class="https">{{ wallet.rpchttps }}</td>
+                        <td class="testnet">{{ wallet.testnet }}</td>
+                        <td class="actions">
+                            <a href="{{ url_for('wallet.wallet_edit', id=wallet.id) }}" class="action">Edit</a>
+                            <form action="{{ url_for('wallet.wallet_delete', id=wallet.id) }}" method="post">
+                                <button type="submit" class="danger">Delete</button>
+                            </form>
+                            <form action="{{ url_for('wallet.wallet_stop', id=wallet.id) }}" method="post">
+                                <button type="submit" class="warning{% if not wallet.info %} disabled{% endif %}">Stop</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% if wallet.info.errors %}
+                        <tr>
+                            <td class="error">
+                                {{ wallet.label }}
+                            </td>
+                            <td colspan="6" class="error">
+                                {{ wallet.info.errors }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="tools" class="content">
+        <h2>Tools</h2>
+        <div class="actions">
+            <a href="{{ url_for('wallet.wallet_add') }}" class="action">Add new wallet</a>
+            {% if show_otp %}
+                <a href="{{ url_for('otp.setup') }}" class="danger">Enable OTP</a>
+            {% endif %}
+        </div>
+        {% if not show_otp %}
+            <p>
+                You have enabled OTP for wallet unlocking.
+                In case you lose your secret or mess anything else up you can
+                undo this by deleting the <i>otpsecret</i> setting directly in
+                the database.
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

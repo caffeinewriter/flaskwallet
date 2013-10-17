@@ -1,0 +1,20 @@
+{% extends 'wallet/address/base.html' %}
+
+{% block bodyclass %}{{ super() }} dumpprivkey{% endblock %}
+
+{% block title %}{{ super() }} Private key{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Private key</li>
+{% endblock %}
+
+{% block content %}
+    {% if data.privkey %}
+        <p>
+            Keep this private key secure.
+            Anybody with this key can spend your bitcoins.
+        </p>
+        {{ data.privkey }}
+    {% endif %}
+{% endblock %}

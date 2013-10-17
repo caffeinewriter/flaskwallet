@@ -1,0 +1,87 @@
+{% extends 'wallet/wallet/detail.html' %}
+
+{% block bodyclass %} detail block{% endblock %}
+
+{% block title %}Block {{ block.hash }}{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Block {{ block.hash }}</li>
+{% endblock %}
+
+{% block content %}
+    <div id="details">
+        <h1>Block details</h1>
+
+        <table>
+            <tr>
+                <td class="label">Previous</td>
+                <td><a href="{{ url_for('block_detail', id=wallet.id, block=block.previousblockhash) }}">{{ block.previousblockhash }}</a></td>
+            </tr>
+
+            <tr>
+                <td class="label">Next</td>
+                <td><a href="{{ url_for('block_detail', id=wallet.id, block=block.nextblockhash) }}">{{ block.nextblockhash }}</a></td>
+            </tr>
+
+            <tr>
+                <td class="label">Merleroot</td>
+                <td>{{ block.merkleroot }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Nonce</td>
+                <td>{{ block.nonce }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Hash</td>
+                <td><a href="{{ url_for('block_detail', id=wallet.id, block=block.hash) }}">{{ block.hash }}</a></td>
+            </tr>
+
+            <tr>
+                <td class="label">Version</td>
+                <td>{{ block.version }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Height</td>
+                <td>{{ block.height }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Difficulty</td>
+                <td>{{ block.difficulty }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Confirmations</td>
+                <td>{{ block.confirmations }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Time</td>
+                <td>{{ block.time|timeformat }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Bits</td>
+                <td>{{ block.bits }}</td>
+            </tr>
+
+            <tr>
+                <td class="label">Size</td>
+                <td>{{ block.size }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="tx">
+        <h2>Transactions</h2>
+        <ul>
+            {% for tx in block.tx %}
+                <li><a class="external" href="http://blockchain.info/tx/{{ tx }}">{{ tx }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

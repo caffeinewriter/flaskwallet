@@ -1,0 +1,18 @@
+<h2>Accounts</h2>
+<table>
+    <tbody>
+        {% for account, balance in accounts.iteritems() %}
+            {% if not account %} {# Handle the "" account #}
+                {% set account='__DEFAULT_ACCOUNT__' %}
+            {% endif %}
+            <tr>
+                <td>
+                    <a href="{{ url_for('wallet.account_detail', id=wallet.id, account=account)|urlencode }}">{{ account }}</a>
+                </td>
+                <td>
+                    {{ balance|coinformat }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,60 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }}  mininginfo{% endblock %}
+
+{% block title %}{{ super() }} Mining info{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Mining info</li>
+{% endblock %}
+
+{% block content %}
+    <div id="mininginfo">
+        <h2>Wallet Mining Info</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Pooledtx</td>
+                    <td>{{ data.pooledtx }}</td>
+                </tr>
+                <tr>
+                    <td>Erros</td>
+                    <td>{{ data.errors }}</td>
+                </tr>
+                <tr>
+                    <td>Blocks</td>
+                    <td>{{ data.blocks }}</td>
+                </tr>
+                <tr>
+                    <td>Genproclimit</td>
+                    <td>{{ data.genproclimit }}</td>
+                </tr>
+                <tr>
+                    <td>Difficulty</td>
+                    <td>{{ data.difficulty }}</td>
+                </tr>
+                <tr>
+                    <td>Testnet</td>
+                    <td>{{ data.testnet }}</td>
+                </tr>
+                <tr>
+                    <td>Hashes per second</td>
+                    <td>{{ data.hashespersec }}</td>
+                </tr>
+                <tr>
+                    <td>Current blocksize</td>
+                    <td>{{ data.currentblocksize }}</td>
+                </tr>
+                <tr>
+                    <td>Generate</td>
+                    <td>{{ data.generate }}</td>
+                </tr>
+                <tr>
+                    <td>Current blocktx</td>
+                    <td>{{ data.currentblocktx }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

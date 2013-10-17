@@ -1,0 +1,38 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block title %}{{ super() }} Received Transactions{% endblock %}
+
+{% block bodyclass %}{{ super() }} received{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Received Transactions</li>
+{% endblock %}
+
+{% block content %}
+    {% if data.receivedbyaddress %}
+        <div id="by-address">
+            <h2>Received by address</h2>
+            <ol>
+                {% for tx in data.receivedbyaddress|reverse %}
+                    <li>
+                        {% include 'wallet/transaction_snippet.html' %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endif %}
+
+    {% if data.receivedbyaccount %}
+        <div id="by-account" class="longlist">
+            <h2>Received by account</h2>
+            <ol>
+                {% for tx in data.receivedbyaccount|reverse %}
+                    <li>
+                        {% include 'wallet/transaction_snippet.html' %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </div>
+    {% endif %}
+{% endblock %}

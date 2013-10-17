@@ -1,0 +1,58 @@
+{% extends 'settings/base.html' %}
+
+{% block bodyclass %}{{ super() }} list{% endblock %}
+
+{% block title %}{{ super() }} List{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <div id="list">
+        <h1>Manage Settings</h1>
+        <table>
+            <thead>
+                <th>Key</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for setting in settings %}
+                    <tr>
+                        <td>{{ setting.name }}</td>
+                        <td>{{ setting.value_decrypted }}</td>
+                        <td>
+                            <a href="{{ url_for('settings.edit', name=setting.name) }}" class="action">Edit</a>
+                            <form action="{{ url_for('settings.delete', name=setting.name) }}" method="post">
+                                <button type="submit" class="danger">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div id="create" class="content">
+        <h2>Add a setting</h2>
+        {% set submittext = "Create setting" %}
+        {% include 'form.html' %}
+        <p>
+            This app will use the following settings if you define them.
+            If you don't set them default values are used.
+        </p>
+        <ul>
+            <li>
+                index_connect: Set to 0 to disable connecting to
+                nodes on the <a href="{{ url_for('wallet.wallet_list') }}">wallet index</a>.
+            </li>
+            <li>
+                global_send: If set to 0 the Send button on wallet pages is
+                hidden. You will have to send from accounts.
+            </li>
+            <li>cachetime_min: How long things are cached (in seconds)</li>
+            <li>cachetime_max: How long things are cached</li>
+            <li>minconf</li>
+        </ul>
+    </div>
+{% endblock %}

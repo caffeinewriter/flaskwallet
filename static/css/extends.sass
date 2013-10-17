@@ -1,0 +1,297 @@
+@import "config"
+@import "mixins"
+
+// http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+%fixpadding
+    -moz-box-sizing: border-box
+    -webkit-box-sizing: border-box
+    box-sizing: border-box
+
+%cell
+    @extend %fixpadding
+    @include transition(0.2s)
+
+%cell-wrap
+    @extend %cell
+    max-width: $screen-large
+    margin: 0 auto
+    clear: both
+    width: auto
+    overflow: hidden
+
+%cell-full
+    @extend %cell-wrap
+    padding: $length-short $cellpadding
+
+%cells-floating
+    overflow: hidden
+    clear: both
+    > div
+        @extend %cell
+        width: 100%
+        padding: $cellpadding
+        float: left
+
+// 100% -> 50%
+%cells-half
+    @extend %cells-floating
+    > div
+        @media screen and (min-width: $screen-small)
+            width: 50%
+            // rows
+            &:nth-child(2n-1)
+                clear: both
+
+// 100% -> 50% -> 33%
+%cells-half-third
+    @extend %cells-floating
+    > div
+        @media screen and (min-width: $screen-small)
+            width: 50%
+            // rows
+            &:nth-child(2n-1)
+                clear: both
+            &:nth-child(2n)
+                clear: none
+        @media screen and (min-width: $screen-large)
+            width: 33.33%
+            // rows
+            &:nth-child(3n-2)
+                clear: both
+            &:nth-child(3n-1)
+                clear: none
+            &:nth-child(3n)
+                clear: none
+
+// 100% -> 62/38%
+%cells-gr-left
+    @extend %cells-floating
+    > div
+        @media screen and (min-width: $screen-medium)
+            // rows
+            &:nth-child(2n-1)
+                clear: both
+                width: 61.8%
+            &:nth-child(2n)
+                width: 38.2%
+
+// 100% -> 38/62%
+%cells-gr-right
+    @extend %cells-floating
+    > div
+        @media screen and (min-width: $screen-medium)
+            // rows
+            &:nth-child(2n-1)
+                clear: both
+                width: 38.2%
+            &:nth-child(2n)
+                width: 61.8%
+
+%cells-quarter-third-half
+    @extend %cells-floating
+    > div
+        @media screen and (min-width: $screen-medium)
+            width: 33.33%
+            // rows
+            &:nth-child(3n-2)
+                clear: both
+        @media screen and (min-width: $screen-large)
+            width: 25%
+            // rows
+            &:nth-child(4n-3)
+                clear: both
+            &:nth-child(4n-2)
+                clear: none
+            &:nth-child(4n-1)
+                clear: none
+            &:nth-child(4n)
+                clear: none
+
+%breadcrumb
+    list-style-type: none
+    margin-bottom: $length-medium
+    a
+        color: $color-fg
+
+    > li
+        display: inline-block
+
+        + li:before
+            content: "/\00a0"
+
+%textlink
+    color: $color-fg
+    text-decoration: none
+    &:hover
+        text-decoration: underline
+
+%colorlink
+    @extend %textlink
+    color: $color-link
+
+%button
+    @include border-radius($line-radius)
+    @extend %textlink
+    @include transition(0.1s)
+    border: $line-width solid $line-color
+    padding: $length-short $length-medium
+    background: none
+    font-size: $font-size
+    display: inline-block
+
+    &:hover
+        background: $color-bg-light
+        border-color: $line-color-dark
+        cursor: pointer
+        text-decoration: none
+
+    &.action
+        color: $color-bg
+        background: $color-action
+        border-color: $color-action-dark
+        &:hover
+            background: $color-action-dark
+
+    &.info
+        color: $color-bg
+        background: $color-info
+        border-color: $color-info-dark
+        &:hover
+            background: $color-info-dark
+
+    &.danger,
+    &.error
+        color: $color-bg
+        background: $color-error
+        border-color: $color-error-dark
+        &:hover
+            background: $color-error-dark
+
+    &.warning
+        color: $color-bg
+        background: $color-warning
+        border-color: $color-warning-dark
+        &:hover
+            background: $color-warning-dark
+
+    &.success
+        color: $color-bg
+        background: $color-success
+        border-color: $color-success-dark
+        &:hover
+            background: $color-success-dark
+
+    // let's try this
+    // http://stackoverflow.com/questions/2091168/disable-a-link-using-css
+    &.disabled
+        pointer-events: none
+        cursor: default
+        opacity: 0.6
+
+    // better compatibilty for presumed touch devices
+    @media screen and (max-device-width: $screen-touch)
+        min-height: $touch-min-height - $length-short * 2 // fix padding
+        min-width: $touch-min-width - $length-medium * 2
+        line-height: $touch-min-height
+
+%buttoncontainer
+    button,
+    a
+        margin-bottom: $length-short
+
+%fancytable
+    table
+        border-spacing: 0
+        border-collapse: collapse
+        width: 100%
+        thead th
+            font-weight: bold
+            padding: $length-short
+        tbody tr
+            border-bottom: $line-width solid $line-color
+            &:first-child
+                border-top: $line-width solid $line-color
+            &:nth-child(2n)
+                background-color: $color-bg-light
+            td
+                padding: $length-short
+    a
+        @extend %colorlink
+
+%fancylist
+    li
+        display: block
+        border-bottom: $line-width solid $line-color
+        padding: $length-short
+        &:hover
+            background-color: $color-bg-light
+        &:first-child
+            border-top: $line-width solid $line-color
+        &:nth-child(2n)
+            background-color: $color-bg-dark
+    a
+        @extend %colorlink
+
+%card
+    @include border-radius($line-radius)
+    border: $line-width solid $line-color
+    padding: $length-medium
+    margin-bottom: $length-medium
+    background: $color-bg-light
+    overflow: hidden
+
+%fancyform
+    label
+        display: block
+        font-size: 0.75em
+    select,
+    input,
+    textarea
+        @include border-radius($line-radius)
+        border: $line-width solid $line-color
+        padding: $length-short
+        background: none
+    .form-group > div
+        margin: $length-medium 0
+    select,
+    input[type=text],
+    input[type=password]
+        font-size: 1em
+        min-width: 30ex
+    .help-block
+        font-size: 0.75em
+        display: block
+    .has-error .help-block
+        color: $color-error
+    button[type=submit]
+        @extend %button
+
+%code
+    // now this was fun :-)
+    @include border-radius(0 0 $length-short $length-short)
+    @include shadow(4px 2px 8px #090909)
+    padding: $length-long
+    white-space: pre-wrap
+    white-space: -moz-pre-wrap !important
+    white-space: -pre-wrap
+    white-space: -o-pre-wrap
+    word-wrap: break-word
+    font-family: "Courier New", Courier, monospace
+    background: rgba(0,0,0,0.8)
+    color: #63de00
+    margin-bottom: $length-vertical
+    max-width: 80ex
+    &:before
+        position: relative
+        content: 'rxvt'
+        color: #c9c9c9 !important
+        font-size: smaller
+        font-weight: bold
+        line-height: $length-short
+        height: $length-short
+        width: 100%
+        display: block
+        padding: $length-long
+        background: #090909
+        left: -$length-long
+        top: -$length-long

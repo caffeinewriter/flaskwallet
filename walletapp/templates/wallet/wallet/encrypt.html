@@ -1,0 +1,15 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block bodyclass %}{{ super() }} encrypt{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Encrypt</li>
+{% endblock %}
+
+{% block content %}
+    <div id="edit">
+        {% set submittext='Save wallet' %}
+        {% include 'form.html' %}
+    </div>
+{% endblock %}

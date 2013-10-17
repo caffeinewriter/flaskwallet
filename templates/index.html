@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block bodyclass %} home{% endblock %}
+
+{% block title %}Flaskwallet{% endblock %}
+
+{% block content %}
+    {% if readme %}
+        {{ readme|safe }}
+    {% else %}
+        <div id="info" class="content">
+            <h1>Flaskwallet</h1>
+            <p>
+                Hi. If you see this page it worked.
+                You successfully launched <em>flaskwallet</em>.
+            <p>
+                Install <code>python-docutils</code> to see the README here:
+            <pre>{{ '' -}}
+                $ sudo apt-get install python-docutils</pre>
+        </div>
+    {% endif %}
+{% endblock %}

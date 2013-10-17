@@ -1,0 +1,21 @@
+{% extends 'otp/base.html' %}
+
+{% block bocyclass %}{{ super() }} setup{% endblock %}
+
+{% block title %}{{ super() }} setup{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Setup</li>
+{% endblock %}
+
+{% block content %}
+    <h1>Google Authenticator</h1>
+    <p>
+        OTP has been enabled. Scan the QR code with Google Authenticator.
+    </p>
+    <p>
+        This code will only be displayed once.
+    </p>
+    <img src="{{ url_for('otp.qr') }}" width="400" height="400" alt="secret key qr code">
+{% endblock %}

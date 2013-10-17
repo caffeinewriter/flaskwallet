@@ -1,0 +1,12 @@
+{% if data.transactions %}
+    <div id="transactions" class="longlist">
+        <h2>Transactions</h2>
+        <ol>
+            {% for tx in data.transactions|reverse %}
+                <li>
+                    {% include 'wallet/transaction_snippet.html' %}
+                </li>
+            {% endfor %}
+        </ol>
+    </div>
+{% endif %}

@@ -1,0 +1,24 @@
+{% extends 'wallet/account/base.html' %}
+
+{% block bodyclass %}{{ super() }} send{% endblock %}
+
+{% block title %}{{ super() }} Send coins{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Send coins</li>
+{% endblock %}
+
+{% block content %}
+    <div id="form">
+        <h2>Send coins</h2>
+        {% include 'form.html' %}
+    </div>
+
+    <div id="balance">
+        <h2>Account balance</h2>
+        <p>
+            Balance {{ balance|coinformat }}
+        </p>
+    </div>
+{% endblock %}

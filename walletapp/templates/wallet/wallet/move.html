@@ -1,0 +1,22 @@
+{% extends 'wallet/wallet/base.html' %}
+
+{% block title %}{{ super() }} Move coins{% endblock %}
+
+{% block bodyclass  %}{{ super() }} move{% endblock %}
+
+{% block breadcrumb %}
+    {{ super() }}
+    <li>Move coins</li>
+{% endblock %}
+
+{% block content %}
+    <div id="balances">
+        {% include 'wallet/account/balances.html' %}
+    </div>
+
+    <div id="form" class="narrowlist">
+        <h2>Move coins</h2>
+        {% set submittext='Move coins' %}
+        {% include 'form.html' %}
+    </div>
+{% endblock %}
