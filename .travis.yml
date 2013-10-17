@@ -2,7 +2,7 @@ language: python
 python:
 - 2.7
 install:
-  - pip install -q --use-mirrors coveralls
+  - pip install -q --use-mirrors -r doc/requirements.txt
 script: make test
 notifications:
   irc:
