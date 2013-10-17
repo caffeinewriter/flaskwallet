@@ -1,7 +1,6 @@
 from flaskwallet import app
 from flaskwallet import session
 from flaskwallet import init_db
-from marketsapp.app import marketsapp
 from otpapp.app import otpapp
 from settingsapp.app import settingsapp
 from walletapp.app import walletapp
@@ -14,7 +13,6 @@ except:
 
 
 app.config.from_envvar('FLASK_ADMIN', silent=True)
-app.register_blueprint(marketsapp)  # Needed for app config
 app.register_blueprint(otpapp)
 app.register_blueprint(settingsapp)
 app.register_blueprint(walletapp)
