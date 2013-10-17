@@ -2,6 +2,6 @@ flask
 wtforms
 Flask-WTF
 sqlalchemy
--e git+https://github.com/nkuttler/bitcoin-python.git@github.com:nkuttler/bitcoin-python.git@58c15f107a1b169bafc4b567a1ffdb7ebe31cac3#egg=bitcoin-python-nkuttler
+-e git+https://github.com/nkuttler/bitcoin-python.git#egg=bitcoin-python-nkuttler
 qrcode
 pycrypto
