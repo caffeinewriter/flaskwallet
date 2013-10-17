@@ -1,0 +1,664 @@
+* {
+  margin: 0;
+  padding: 0; }
+
+img,
+fieldset {
+  border: 0; }
+
+nav, #flashes, body.block.detail #details,
+body.block.detail #tx, body.peers section, body.mininginfo section, body.help section, body.unlock section, body.sign section, body.add section, body.groupings section, body.home section, body.settings.edit section #edit, #wrapper, body.wallet.send section > div,
+body.account.send section > div, body.wallet.edit section > div,
+body.account.edit section > div,
+body.wallet.move section > div, body.settings.list section > div, body.wallet.detail section > div, body.account.detail section > div, body.wallet.list section > div, body.address.detail section > div, body.markets.list section > div {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+nav, #flashes, body.block.detail #details,
+body.block.detail #tx, body.peers section, body.mininginfo section, body.help section, body.unlock section, body.sign section, body.add section, body.groupings section, body.home section, body.settings.edit section #edit, #wrapper, body.wallet.send section > div,
+body.account.send section > div, body.wallet.edit section > div,
+body.account.edit section > div,
+body.wallet.move section > div, body.settings.list section > div, body.wallet.detail section > div, body.account.detail section > div, body.wallet.list section > div, body.address.detail section > div, body.markets.list section > div {
+  -webkit-transition: 0.2s linear;
+  -moz-transition: 0.2s linear;
+  -ms-transition: 0.2s linear;
+  -o-transition: 0.2s linear;
+  transition: 0.2s linear; }
+
+nav, #flashes, body.block.detail #details,
+body.block.detail #tx, body.peers section, body.mininginfo section, body.help section, body.unlock section, body.sign section, body.add section, body.groupings section, body.home section, body.settings.edit section #edit, #wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  clear: both;
+  width: auto;
+  overflow: hidden; }
+
+nav, #flashes, body.block.detail #details,
+body.block.detail #tx, body.peers section, body.mininginfo section, body.help section, body.unlock section, body.sign section, body.add section, body.groupings section, body.home section, body.settings.edit section #edit {
+  padding: 4px 8px; }
+
+body.wallet.send section,
+body.account.send section, body.wallet.edit section,
+body.account.edit section,
+body.wallet.move section, body.settings.list section, body.wallet.detail section, body.account.detail section, body.wallet.list section, body.address.detail section, body.markets.list section {
+  overflow: hidden;
+  clear: both; }
+  body.wallet.send section > div,
+  body.account.send section > div, body.wallet.edit section > div,
+  body.account.edit section > div,
+  body.wallet.move section > div, body.settings.list section > div, body.wallet.detail section > div, body.account.detail section > div, body.wallet.list section > div, body.address.detail section > div, body.markets.list section > div {
+    width: 100%;
+    padding: 8px;
+    float: left; }
+
+@media screen and (min-width: 768px) {
+  body.wallet.send section > div,
+  body.account.send section > div, body.wallet.edit section > div,
+  body.account.edit section > div,
+  body.wallet.move section > div, body.settings.list section > div {
+    width: 50%; }
+    body.wallet.send section > div:nth-child(2n-1),
+    body.account.send section > div:nth-child(2n-1), body.wallet.edit section > div:nth-child(2n-1),
+    body.account.edit section > div:nth-child(2n-1),
+    body.wallet.move section > div:nth-child(2n-1), body.settings.list section > div:nth-child(2n-1) {
+      clear: both; } }
+
+@media screen and (min-width: 768px) {
+  body.wallet.detail section > div, body.account.detail section > div {
+    width: 50%; }
+    body.wallet.detail section > div:nth-child(2n-1), body.account.detail section > div:nth-child(2n-1) {
+      clear: both; }
+    body.wallet.detail section > div:nth-child(2n), body.account.detail section > div:nth-child(2n) {
+      clear: none; } }
+@media screen and (min-width: 1200px) {
+  body.wallet.detail section > div, body.account.detail section > div {
+    width: 33.33%; }
+    body.wallet.detail section > div:nth-child(3n-2), body.account.detail section > div:nth-child(3n-2) {
+      clear: both; }
+    body.wallet.detail section > div:nth-child(3n-1), body.account.detail section > div:nth-child(3n-1) {
+      clear: none; }
+    body.wallet.detail section > div:nth-child(3n), body.account.detail section > div:nth-child(3n) {
+      clear: none; } }
+
+@media screen and (min-width: 1024px) {
+  body.wallet.list section > div:nth-child(2n-1), body.address.detail section > div:nth-child(2n-1) {
+    clear: both;
+    width: 61.8%; }
+  body.wallet.list section > div:nth-child(2n), body.address.detail section > div:nth-child(2n) {
+    width: 38.2%; } }
+
+@media screen and (min-width: 1024px) {
+  body.markets.list section > div {
+    width: 33.33%; }
+    body.markets.list section > div:nth-child(3n-2) {
+      clear: both; } }
+@media screen and (min-width: 1200px) {
+  body.markets.list section > div {
+    width: 25%; }
+    body.markets.list section > div:nth-child(4n-3) {
+      clear: both; }
+    body.markets.list section > div:nth-child(4n-2) {
+      clear: none; }
+    body.markets.list section > div:nth-child(4n-1) {
+      clear: none; }
+    body.markets.list section > div:nth-child(4n) {
+      clear: none; } }
+
+nav #breadcrumb {
+  list-style-type: none;
+  margin-bottom: 8px; }
+  nav #breadcrumb a {
+    color: #090909; }
+  nav #breadcrumb > li {
+    display: inline-block; }
+    nav #breadcrumb > li + li:before {
+      content: "/\00a0"; }
+
+body.wallet.list #wallets a, body.wallet.edit section a,
+body.account.edit section a,
+body.wallet.move section a, body.peers section a, body.mininginfo section a, body.help section a, body.groupings section a, #accounts a, #summary a, body.settings.list section #list a, #addresses ol a, body.wallet.send section button[type=submit],
+body.account.send section button[type=submit], body.wallet.edit section button[type=submit],
+body.account.edit section button[type=submit],
+body.wallet.move section button[type=submit], body.unlock section button[type=submit], body.sign section button[type=submit], body.add section button[type=submit], #tools form button[type=submit], body.settings.list section #create button[type=submit], body.settings.edit section #edit button[type=submit], nav #mainnav a, nav .control a,
+body.wallet.list #wallets button, #tools a,
+#tools input[type=submit],
+body.settings.list section #list button, footer a {
+  color: #090909;
+  text-decoration: none; }
+  body.wallet.list #wallets a:hover, body.wallet.edit section a:hover,
+  body.account.edit section a:hover,
+  body.wallet.move section a:hover, body.peers section a:hover, body.mininginfo section a:hover, body.help section a:hover, body.groupings section a:hover, #accounts a:hover, #summary a:hover, body.settings.list section #list a:hover, #addresses ol a:hover, body.wallet.send section button[type=submit]:hover,
+  body.account.send section button[type=submit]:hover, body.wallet.edit section button[type=submit]:hover,
+  body.account.edit section button[type=submit]:hover,
+  body.wallet.move section button[type=submit]:hover, body.unlock section button[type=submit]:hover, body.sign section button[type=submit]:hover, body.add section button[type=submit]:hover, #tools form button[type=submit]:hover, body.settings.list section #create button[type=submit]:hover, body.settings.edit section #edit button[type=submit]:hover, nav #mainnav a:hover, nav .control a:hover,
+  body.wallet.list #wallets button:hover, #tools a:hover,
+  #tools input[type=submit]:hover,
+  body.settings.list section #list button:hover, footer a:hover {
+    text-decoration: underline; }
+
+body.wallet.list #wallets a, body.wallet.edit section a,
+body.account.edit section a,
+body.wallet.move section a, body.peers section a, body.mininginfo section a, body.help section a, body.groupings section a, #accounts a, #summary a, body.settings.list section #list a, #addresses ol a {
+  color: #0000cc; }
+
+body.wallet.send section button[type=submit],
+body.account.send section button[type=submit], body.wallet.edit section button[type=submit],
+body.account.edit section button[type=submit],
+body.wallet.move section button[type=submit], body.unlock section button[type=submit], body.sign section button[type=submit], body.add section button[type=submit], #tools form button[type=submit], body.settings.list section #create button[type=submit], body.settings.edit section #edit button[type=submit], nav #mainnav a, nav .control a, body.wallet.list #wallets a,
+body.wallet.list #wallets button, #tools a,
+#tools input[type=submit], body.settings.list section #list a,
+body.settings.list section #list button {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-transition: 0.1s linear;
+  -moz-transition: 0.1s linear;
+  -ms-transition: 0.1s linear;
+  -o-transition: 0.1s linear;
+  transition: 0.1s linear;
+  border: 1px solid #cccccc;
+  padding: 4px 8px;
+  background: none;
+  font-size: 16px;
+  display: inline-block; }
+  body.wallet.send section button[type=submit]:hover,
+  body.account.send section button[type=submit]:hover, body.wallet.edit section button[type=submit]:hover,
+  body.account.edit section button[type=submit]:hover,
+  body.wallet.move section button[type=submit]:hover, body.unlock section button[type=submit]:hover, body.sign section button[type=submit]:hover, body.add section button[type=submit]:hover, #tools form button[type=submit]:hover, body.settings.list section #create button[type=submit]:hover, body.settings.edit section #edit button[type=submit]:hover, nav #mainnav a:hover, nav .control a:hover, body.wallet.list #wallets a:hover,
+  body.wallet.list #wallets button:hover, #tools a:hover,
+  #tools input[type=submit]:hover, body.settings.list section #list a:hover,
+  body.settings.list section #list button:hover {
+    background: #e9e9e9;
+    border-color: #bbbbbb;
+    cursor: pointer;
+    text-decoration: none; }
+  body.wallet.send section button.action[type=submit],
+  body.account.send section button.action[type=submit], body.wallet.edit section button.action[type=submit],
+  body.account.edit section button.action[type=submit],
+  body.wallet.move section button.action[type=submit], body.unlock section button.action[type=submit], body.sign section button.action[type=submit], body.add section button.action[type=submit], #tools form button.action[type=submit], body.settings.list section #create button.action[type=submit], body.settings.edit section #edit button.action[type=submit], nav #mainnav a.action, nav .control a.action, body.wallet.list #wallets a.action,
+  body.wallet.list #wallets button.action, #tools a.action,
+  #tools input.action[type=submit], body.settings.list section #list a.action,
+  body.settings.list section #list button.action {
+    color: #f9f9f9;
+    background: #336699;
+    border-color: #225588; }
+    body.wallet.send section button.action[type=submit]:hover,
+    body.account.send section button.action[type=submit]:hover, body.wallet.edit section button.action[type=submit]:hover,
+    body.account.edit section button.action[type=submit]:hover,
+    body.wallet.move section button.action[type=submit]:hover, body.unlock section button.action[type=submit]:hover, body.sign section button.action[type=submit]:hover, body.add section button.action[type=submit]:hover, #tools form button.action[type=submit]:hover, body.settings.list section #create button.action[type=submit]:hover, body.settings.edit section #edit button.action[type=submit]:hover, nav #mainnav a.action:hover, nav .control a.action:hover, body.wallet.list #wallets a.action:hover,
+    body.wallet.list #wallets button.action:hover, #tools a.action:hover,
+    #tools input.action[type=submit]:hover, body.settings.list section #list a.action:hover,
+    body.settings.list section #list button.action:hover {
+      background: #225588; }
+  body.wallet.send section button.info[type=submit],
+  body.account.send section button.info[type=submit], body.wallet.edit section button.info[type=submit],
+  body.account.edit section button.info[type=submit],
+  body.wallet.move section button.info[type=submit], body.unlock section button.info[type=submit], body.sign section button.info[type=submit], body.add section button.info[type=submit], #tools form button.info[type=submit], body.settings.list section #create button.info[type=submit], body.settings.edit section #edit button.info[type=submit], nav #mainnav a.info, nav .control a.info, body.wallet.list #wallets a.info,
+  body.wallet.list #wallets button.info, #tools a.info,
+  #tools input.info[type=submit], body.settings.list section #list a.info,
+  body.settings.list section #list button.info {
+    color: #f9f9f9;
+    background: #39c9c9;
+    border-color: #29b9b9; }
+    body.wallet.send section button.info[type=submit]:hover,
+    body.account.send section button.info[type=submit]:hover, body.wallet.edit section button.info[type=submit]:hover,
+    body.account.edit section button.info[type=submit]:hover,
+    body.wallet.move section button.info[type=submit]:hover, body.unlock section button.info[type=submit]:hover, body.sign section button.info[type=submit]:hover, body.add section button.info[type=submit]:hover, #tools form button.info[type=submit]:hover, body.settings.list section #create button.info[type=submit]:hover, body.settings.edit section #edit button.info[type=submit]:hover, nav #mainnav a.info:hover, nav .control a.info:hover, body.wallet.list #wallets a.info:hover,
+    body.wallet.list #wallets button.info:hover, #tools a.info:hover,
+    #tools input.info[type=submit]:hover, body.settings.list section #list a.info:hover,
+    body.settings.list section #list button.info:hover {
+      background: #29b9b9; }
+  body.wallet.send section button.danger[type=submit],
+  body.account.send section button.danger[type=submit], body.wallet.edit section button.danger[type=submit],
+  body.account.edit section button.danger[type=submit],
+  body.wallet.move section button.danger[type=submit], body.unlock section button.danger[type=submit], body.sign section button.danger[type=submit], body.add section button.danger[type=submit], #tools form button.danger[type=submit], body.settings.list section #create button.danger[type=submit], body.settings.edit section #edit button.danger[type=submit], nav #mainnav a.danger, nav .control a.danger, body.wallet.list #wallets a.danger,
+  body.wallet.list #wallets button.danger, #tools a.danger,
+  #tools input.danger[type=submit], body.settings.list section #list a.danger,
+  body.settings.list section #list button.danger, body.wallet.send section button.error[type=submit],
+  body.account.send section button.error[type=submit], body.wallet.edit section button.error[type=submit],
+  body.account.edit section button.error[type=submit],
+  body.wallet.move section button.error[type=submit], body.unlock section button.error[type=submit], body.sign section button.error[type=submit], body.add section button.error[type=submit], #tools form button.error[type=submit], body.settings.list section #create button.error[type=submit], body.settings.edit section #edit button.error[type=submit], nav #mainnav a.error, nav .control a.error, body.wallet.list #wallets a.error,
+  body.wallet.list #wallets button.error, #tools a.error,
+  #tools input.error[type=submit], body.settings.list section #list a.error,
+  body.settings.list section #list button.error {
+    color: #f9f9f9;
+    background: #c93939;
+    border-color: #b92929; }
+    body.wallet.send section button.danger[type=submit]:hover,
+    body.account.send section button.danger[type=submit]:hover, body.wallet.edit section button.danger[type=submit]:hover,
+    body.account.edit section button.danger[type=submit]:hover,
+    body.wallet.move section button.danger[type=submit]:hover, body.unlock section button.danger[type=submit]:hover, body.sign section button.danger[type=submit]:hover, body.add section button.danger[type=submit]:hover, #tools form button.danger[type=submit]:hover, body.settings.list section #create button.danger[type=submit]:hover, body.settings.edit section #edit button.danger[type=submit]:hover, nav #mainnav a.danger:hover, nav .control a.danger:hover, body.wallet.list #wallets a.danger:hover,
+    body.wallet.list #wallets button.danger:hover, #tools a.danger:hover,
+    #tools input.danger[type=submit]:hover, body.settings.list section #list a.danger:hover,
+    body.settings.list section #list button.danger:hover, body.wallet.send section button.error[type=submit]:hover,
+    body.account.send section button.error[type=submit]:hover, body.wallet.edit section button.error[type=submit]:hover,
+    body.account.edit section button.error[type=submit]:hover,
+    body.wallet.move section button.error[type=submit]:hover, body.unlock section button.error[type=submit]:hover, body.sign section button.error[type=submit]:hover, body.add section button.error[type=submit]:hover, #tools form button.error[type=submit]:hover, body.settings.list section #create button.error[type=submit]:hover, body.settings.edit section #edit button.error[type=submit]:hover, nav #mainnav a.error:hover, nav .control a.error:hover, body.wallet.list #wallets a.error:hover,
+    body.wallet.list #wallets button.error:hover, #tools a.error:hover,
+    #tools input.error[type=submit]:hover, body.settings.list section #list a.error:hover,
+    body.settings.list section #list button.error:hover {
+      background: #b92929; }
+  body.wallet.send section button.warning[type=submit],
+  body.account.send section button.warning[type=submit], body.wallet.edit section button.warning[type=submit],
+  body.account.edit section button.warning[type=submit],
+  body.wallet.move section button.warning[type=submit], body.unlock section button.warning[type=submit], body.sign section button.warning[type=submit], body.add section button.warning[type=submit], #tools form button.warning[type=submit], body.settings.list section #create button.warning[type=submit], body.settings.edit section #edit button.warning[type=submit], nav #mainnav a.warning, nav .control a.warning, body.wallet.list #wallets a.warning,
+  body.wallet.list #wallets button.warning, #tools a.warning,
+  #tools input.warning[type=submit], body.settings.list section #list a.warning,
+  body.settings.list section #list button.warning {
+    color: #f9f9f9;
+    background: #f96909;
+    border-color: #d96909; }
+    body.wallet.send section button.warning[type=submit]:hover,
+    body.account.send section button.warning[type=submit]:hover, body.wallet.edit section button.warning[type=submit]:hover,
+    body.account.edit section button.warning[type=submit]:hover,
+    body.wallet.move section button.warning[type=submit]:hover, body.unlock section button.warning[type=submit]:hover, body.sign section button.warning[type=submit]:hover, body.add section button.warning[type=submit]:hover, #tools form button.warning[type=submit]:hover, body.settings.list section #create button.warning[type=submit]:hover, body.settings.edit section #edit button.warning[type=submit]:hover, nav #mainnav a.warning:hover, nav .control a.warning:hover, body.wallet.list #wallets a.warning:hover,
+    body.wallet.list #wallets button.warning:hover, #tools a.warning:hover,
+    #tools input.warning[type=submit]:hover, body.settings.list section #list a.warning:hover,
+    body.settings.list section #list button.warning:hover {
+      background: #d96909; }
+  body.wallet.send section button.success[type=submit],
+  body.account.send section button.success[type=submit], body.wallet.edit section button.success[type=submit],
+  body.account.edit section button.success[type=submit],
+  body.wallet.move section button.success[type=submit], body.unlock section button.success[type=submit], body.sign section button.success[type=submit], body.add section button.success[type=submit], #tools form button.success[type=submit], body.settings.list section #create button.success[type=submit], body.settings.edit section #edit button.success[type=submit], nav #mainnav a.success, nav .control a.success, body.wallet.list #wallets a.success,
+  body.wallet.list #wallets button.success, #tools a.success,
+  #tools input.success[type=submit], body.settings.list section #list a.success,
+  body.settings.list section #list button.success {
+    color: #f9f9f9;
+    background: #099909;
+    border-color: #098909; }
+    body.wallet.send section button.success[type=submit]:hover,
+    body.account.send section button.success[type=submit]:hover, body.wallet.edit section button.success[type=submit]:hover,
+    body.account.edit section button.success[type=submit]:hover,
+    body.wallet.move section button.success[type=submit]:hover, body.unlock section button.success[type=submit]:hover, body.sign section button.success[type=submit]:hover, body.add section button.success[type=submit]:hover, #tools form button.success[type=submit]:hover, body.settings.list section #create button.success[type=submit]:hover, body.settings.edit section #edit button.success[type=submit]:hover, nav #mainnav a.success:hover, nav .control a.success:hover, body.wallet.list #wallets a.success:hover,
+    body.wallet.list #wallets button.success:hover, #tools a.success:hover,
+    #tools input.success[type=submit]:hover, body.settings.list section #list a.success:hover,
+    body.settings.list section #list button.success:hover {
+      background: #098909; }
+  body.wallet.send section button.disabled[type=submit],
+  body.account.send section button.disabled[type=submit], body.wallet.edit section button.disabled[type=submit],
+  body.account.edit section button.disabled[type=submit],
+  body.wallet.move section button.disabled[type=submit], body.unlock section button.disabled[type=submit], body.sign section button.disabled[type=submit], body.add section button.disabled[type=submit], #tools form button.disabled[type=submit], body.settings.list section #create button.disabled[type=submit], body.settings.edit section #edit button.disabled[type=submit], nav #mainnav a.disabled, nav .control a.disabled, body.wallet.list #wallets a.disabled,
+  body.wallet.list #wallets button.disabled, #tools a.disabled,
+  #tools input.disabled[type=submit], body.settings.list section #list a.disabled,
+  body.settings.list section #list button.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6; }
+  @media screen and (max-device-width: 1024px) {
+    body.wallet.send section button[type=submit],
+    body.account.send section button[type=submit], body.wallet.edit section button[type=submit],
+    body.account.edit section button[type=submit],
+    body.wallet.move section button[type=submit], body.unlock section button[type=submit], body.sign section button[type=submit], body.add section button[type=submit], #tools form button[type=submit], body.settings.list section #create button[type=submit], body.settings.edit section #edit button[type=submit], nav #mainnav a, nav .control a, body.wallet.list #wallets a,
+    body.wallet.list #wallets button, #tools a,
+    #tools input[type=submit], body.settings.list section #list a,
+    body.settings.list section #list button {
+      min-height: 24px;
+      min-width: 16px;
+      line-height: 32px; } }
+
+nav #mainnav button, body.wallet.list #tools .actions button, #tools .tools button,
+#tools .info button,
+nav #mainnav a,
+body.wallet.list #tools .actions a,
+#tools .tools a,
+#tools .info a {
+  margin-bottom: 4px; }
+
+body.wallet.list #wallets table, body.wallet.edit section table,
+body.account.edit section table,
+body.wallet.move section table, body.peers section table, body.mininginfo section table, body.help section table, body.groupings section table, #accounts table, #summary table, body.settings.list section #list table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%; }
+  body.wallet.list #wallets table thead th, body.wallet.edit section table thead th,
+  body.account.edit section table thead th,
+  body.wallet.move section table thead th, body.peers section table thead th, body.mininginfo section table thead th, body.help section table thead th, body.groupings section table thead th, #accounts table thead th, #summary table thead th, body.settings.list section #list table thead th {
+    font-weight: bold;
+    padding: 4px; }
+  body.wallet.list #wallets table tbody tr, body.wallet.edit section table tbody tr,
+  body.account.edit section table tbody tr,
+  body.wallet.move section table tbody tr, body.peers section table tbody tr, body.mininginfo section table tbody tr, body.help section table tbody tr, body.groupings section table tbody tr, #accounts table tbody tr, #summary table tbody tr, body.settings.list section #list table tbody tr {
+    border-bottom: 1px solid #cccccc; }
+    body.wallet.list #wallets table tbody tr:first-child, body.wallet.edit section table tbody tr:first-child,
+    body.account.edit section table tbody tr:first-child,
+    body.wallet.move section table tbody tr:first-child, body.peers section table tbody tr:first-child, body.mininginfo section table tbody tr:first-child, body.help section table tbody tr:first-child, body.groupings section table tbody tr:first-child, #accounts table tbody tr:first-child, #summary table tbody tr:first-child, body.settings.list section #list table tbody tr:first-child {
+      border-top: 1px solid #cccccc; }
+    body.wallet.list #wallets table tbody tr:nth-child(2n), body.wallet.edit section table tbody tr:nth-child(2n),
+    body.account.edit section table tbody tr:nth-child(2n),
+    body.wallet.move section table tbody tr:nth-child(2n), body.peers section table tbody tr:nth-child(2n), body.mininginfo section table tbody tr:nth-child(2n), body.help section table tbody tr:nth-child(2n), body.groupings section table tbody tr:nth-child(2n), #accounts table tbody tr:nth-child(2n), #summary table tbody tr:nth-child(2n), body.settings.list section #list table tbody tr:nth-child(2n) {
+      background-color: #e9e9e9; }
+    body.wallet.list #wallets table tbody tr td, body.wallet.edit section table tbody tr td,
+    body.account.edit section table tbody tr td,
+    body.wallet.move section table tbody tr td, body.peers section table tbody tr td, body.mininginfo section table tbody tr td, body.help section table tbody tr td, body.groupings section table tbody tr td, #accounts table tbody tr td, #summary table tbody tr td, body.settings.list section #list table tbody tr td {
+      padding: 4px; }
+
+#addresses ol li {
+  display: block;
+  border-bottom: 1px solid #cccccc;
+  padding: 4px; }
+  #addresses ol li:hover {
+    background-color: #e9e9e9; }
+  #addresses ol li:first-child {
+    border-top: 1px solid #cccccc; }
+  #addresses ol li:nth-child(2n) {
+    background-color: #e3e3e3; }
+
+div.tx {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 8px;
+  margin-bottom: 8px;
+  background: #e9e9e9;
+  overflow: hidden; }
+
+body.wallet.send section label,
+body.account.send section label, body.wallet.edit section label,
+body.account.edit section label,
+body.wallet.move section label, body.unlock section label, body.sign section label, body.add section label, #tools form label, body.settings.list section #create label, body.settings.edit section #edit label {
+  display: block;
+  font-size: 0.75em; }
+body.wallet.send section select,
+body.account.send section select, body.wallet.edit section select,
+body.account.edit section select,
+body.wallet.move section select, body.unlock section select, body.sign section select, body.add section select, #tools form select, body.settings.list section #create select, body.settings.edit section #edit select,
+body.wallet.send section input,
+body.account.send section input,
+body.wallet.edit section input,
+body.account.edit section input,
+body.wallet.move section input,
+body.unlock section input,
+body.sign section input,
+body.add section input,
+#tools form input,
+body.settings.list section #create input,
+body.settings.edit section #edit input,
+body.wallet.send section textarea,
+body.account.send section textarea,
+body.wallet.edit section textarea,
+body.account.edit section textarea,
+body.wallet.move section textarea,
+body.unlock section textarea,
+body.sign section textarea,
+body.add section textarea,
+#tools form textarea,
+body.settings.list section #create textarea,
+body.settings.edit section #edit textarea {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  padding: 4px;
+  background: none; }
+body.wallet.send section .form-group > div,
+body.account.send section .form-group > div, body.wallet.edit section .form-group > div,
+body.account.edit section .form-group > div,
+body.wallet.move section .form-group > div, body.unlock section .form-group > div, body.sign section .form-group > div, body.add section .form-group > div, #tools form .form-group > div, body.settings.list section #create .form-group > div, body.settings.edit section #edit .form-group > div {
+  margin: 8px 0; }
+body.wallet.send section select,
+body.account.send section select, body.wallet.edit section select,
+body.account.edit section select,
+body.wallet.move section select, body.unlock section select, body.sign section select, body.add section select, #tools form select, body.settings.list section #create select, body.settings.edit section #edit select,
+body.wallet.send section input[type=text],
+body.account.send section input[type=text],
+body.wallet.edit section input[type=text],
+body.account.edit section input[type=text],
+body.wallet.move section input[type=text],
+body.unlock section input[type=text],
+body.sign section input[type=text],
+body.add section input[type=text],
+#tools form input[type=text],
+body.settings.list section #create input[type=text],
+body.settings.edit section #edit input[type=text],
+body.wallet.send section input[type=password],
+body.account.send section input[type=password],
+body.wallet.edit section input[type=password],
+body.account.edit section input[type=password],
+body.wallet.move section input[type=password],
+body.unlock section input[type=password],
+body.sign section input[type=password],
+body.add section input[type=password],
+#tools form input[type=password],
+body.settings.list section #create input[type=password],
+body.settings.edit section #edit input[type=password] {
+  font-size: 1em;
+  min-width: 30ex; }
+body.wallet.send section .help-block,
+body.account.send section .help-block, body.wallet.edit section .help-block,
+body.account.edit section .help-block,
+body.wallet.move section .help-block, body.unlock section .help-block, body.sign section .help-block, body.add section .help-block, #tools form .help-block, body.settings.list section #create .help-block, body.settings.edit section #edit .help-block {
+  font-size: 0.75em;
+  display: block; }
+body.wallet.send section .has-error .help-block,
+body.account.send section .has-error .help-block, body.wallet.edit section .has-error .help-block,
+body.account.edit section .has-error .help-block,
+body.wallet.move section .has-error .help-block, body.unlock section .has-error .help-block, body.sign section .has-error .help-block, body.add section .has-error .help-block, #tools form .has-error .help-block, body.settings.list section #create .has-error .help-block, body.settings.edit section #edit .has-error .help-block {
+  color: #c93939; }
+
+pre {
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 4px 2px 8px #090909;
+  -moz-box-shadow: 4px 2px 8px #090909;
+  box-shadow: 4px 2px 8px #090909;
+  padding: 12px;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap !important;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  font-family: "Courier New", Courier, monospace;
+  background: rgba(0, 0, 0, 0.8);
+  color: #63de00;
+  margin-bottom: 2ex;
+  max-width: 80ex; }
+  pre:before {
+    position: relative;
+    content: "rxvt";
+    color: #c9c9c9 !important;
+    font-size: smaller;
+    font-weight: bold;
+    line-height: 4px;
+    height: 4px;
+    width: 100%;
+    display: block;
+    padding: 12px;
+    background: #090909;
+    left: -12px;
+    top: -12px; }
+
+html {
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 16px;
+  color: #090909;
+  overflow-y: scroll;
+  line-height: 1.2;
+  background: #f9f9f9; }
+
+h1, h2, h3, h4, h5 {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin: 16px 0; }
+  h1 a, h2 a, h3 a, h4 a, h5 a {
+    color: #090909;
+    text-decoration: none; }
+
+h2 {
+  font-size: 1.375em; }
+
+h3 {
+  font-size: 1.25em; }
+
+h4 {
+  font-size: 1.125em; }
+
+h5 {
+  font-size: 1.063em; }
+
+.content p,
+.content ol,
+.content ul,
+.document p,
+.document ol,
+.document ul {
+  max-width: 80ex;
+  margin-bottom: 2ex; }
+.content ol,
+.content ul,
+.document ol,
+.document ul {
+  margin-left: 3em; }
+.content ol,
+.document ol {
+  list-style-type: decimal; }
+.content ul,
+.document ul {
+  list-style-type: disc; }
+.content form,
+.document form {
+  margin-bottom: 2ex; }
+.content img,
+.document img {
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+#tocontent {
+  position: absolute;
+  left: -9999em; }
+
+nav {
+  text-align: left; }
+  nav #mainnav li {
+    display: inline-block; }
+    nav #mainnav li.external {
+      display: none; }
+      @media screen and (min-width: 768px) {
+        nav #mainnav li.external {
+          display: inline-block; } }
+  nav #breadcrumb {
+    float: left;
+    font-size: smaller; }
+  nav .control {
+    display: none;
+    float: right; }
+    @media screen and (max-width: 480px) {
+      nav .control {
+        display: block; } }
+
+#flashes {
+  font-size: smaller; }
+  #flashes li {
+    color: #39c9c9;
+    list-style-type: none; }
+    #flashes li.error {
+      color: #b92929; }
+    #flashes li.success {
+      color: #098909; }
+    #flashes li.warning {
+      color: #d96909; }
+
+footer {
+  clear: both;
+  text-align: center;
+  margin-top: 250px;
+  margin-bottom: 12px;
+  font-size: 0.75em; }
+  @media screen and (max-width: 1024px) {
+    footer {
+      margin-top: 150px; } }
+  @media screen and (max-width: 480px) {
+    footer {
+      margin-top: 50px; } }
+
+body.wallet.list #wallets a.testnet {
+  background-color: #099909; }
+  body.wallet.list #wallets a.testnet:hover {
+    background-color: #098909; }
+body.wallet.list #wallets td.actions form {
+  display: inline-block; }
+body.wallet.list #wallets td.error {
+  background-color: #c93939; }
+body.wallet.list #wallets td.host, body.wallet.list #wallets td.port, body.wallet.list #wallets td.https, body.wallet.list #wallets td.testnet, body.wallet.list #wallets td.actions {
+  display: none; }
+body.wallet.list #wallets thead {
+  display: none; }
+@media screen and (min-width: 768px) {
+  body.wallet.list #wallets td.host, body.wallet.list #wallets td.port, body.wallet.list #wallets td.actions, body.wallet.list #wallets td.testnet, body.wallet.list #wallets td.https {
+    display: table-cell; }
+  body.wallet.list #wallets thead {
+    display: table-header-group; } }
+
+body.wallet.detail section #tools form {
+  display: inline-block; }
+
+body.block.detail #details,
+body.block.detail #tx {
+  float: none; }
+
+body.peers section table {
+  font-size: smaller; }
+@media screen and (max-width: 480px) {
+  body.peers section {
+    font-size: xx-small;
+    overflow: visible; } }
+
+body.help section tr.implemented .command {
+  color: #098909; }
+body.help section tr.ignored .command {
+  color: #b92929; }
+body.help section tr.interested .command {
+  color: #225588; }
+
+body.sign section input[type=text] {
+  min-width: 40ex; }
+body.sign section textarea {
+  min-width: 80ex;
+  min-height: 20ex; }
+
+@media screen and (max-device-width: 480px) {
+  body.groupings section {
+    font-size: smaller; } }
+@media screen and (max-width: 320px) {
+  body.groupings section td.address {
+    max-width: 10ex;
+    overflow: hidden; } }
+
+#summary tr.address td + td {
+  font-size: smaller; }
+
+div.tx {
+  font-size: 0.75em; }
+  div.tx.tx-move {
+    border-color: #336699; }
+  div.tx.tx-receive {
+    border-color: #099909; }
+  div.tx.tx-send {
+    border-color: #c93939; }
+  div.tx > div {
+    display: inline-block;
+    margin-right: 8px; }
+  div.tx .address,
+  div.tx .txid,
+  div.tx .blockhash,
+  div.tx .confirmations,
+  div.tx .comment {
+    display: block; }
+
+body.settings.list section #list form {
+  display: inline-block; }
+
+#contents {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  float: right;
+  font-size: smaller;
+  padding: 12px; }
+  #contents ul {
+    margin-left: 12px; }

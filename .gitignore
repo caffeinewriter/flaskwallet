@@ -3,7 +3,6 @@
 .sass-cache/
 *.db
 *.sql
-*.css
 .coverage
 coverage
 bitcoin-testnet-box-*
